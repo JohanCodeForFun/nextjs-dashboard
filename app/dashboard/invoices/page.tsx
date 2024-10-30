@@ -35,11 +35,11 @@ export default async function Page({
         <Search placeholder="Search invoices..." />
         <CreateInvoice />
       </div>
-       <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
-        <Table query={query} currentPage={currentPage} />
+       <Suspense key={query ?? 0 + currentPage ?? 1} fallback={<InvoicesTableSkeleton />}>
+        <Table query={query ?? 0} currentPage={currentPage} />
       </Suspense>
       <div className="mt-5 flex w-full justify-center">
-        <Pagination totalPages={totalPages} />
+        <Pagination totalPages={totalPages ?? 1} />
       </div>
     </div>
   );
